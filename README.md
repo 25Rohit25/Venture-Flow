@@ -13,7 +13,7 @@
 
 ## 2. Live Demo & Repository
 
-- **Public GitHub Repository:** [https://github.com/your-username/ventureflow](https://github.com/your-username/ventureflow) *(replace with your deployed repo URL)*
+- **Public GitHub Repository:** [https://github.com/25Rohit25/Venture-Flow](https://github.com/25Rohit25/Venture-Flow)
 - **Interactive Walkthrough Guide:** See [docs/demo-guide.md](file:///c:/Users/dell/OneDrive/Desktop/Venture%20flow/docs/demo-guide.md) for the structured 90-second evaluator script.
 - **Architectural Decision Records:** See [docs/decisions.md](file:///c:/Users/dell/OneDrive/Desktop/Venture%20flow/docs/decisions.md).
 - **Code0 Development Log:** See [docs/code0-development-log.md](file:///c:/Users/dell/OneDrive/Desktop/Venture%20flow/docs/code0-development-log.md).
