@@ -148,7 +148,7 @@ describe('VentureFlow API Integration Tests', () => {
       expect(res.body.success).toBe(false);
     });
 
-    it('Founder creates draft and publishes startup', async () => {
+    it('STARTUP-01: Founder creates draft and publishes startup', async () => {
       // 1. Create published startup
       const createRes = await request(app)
         .post('/api/v1/startups')
@@ -295,7 +295,7 @@ describe('VentureFlow API Integration Tests', () => {
       expect(res.body.success).toBe(false);
     });
 
-    it('Founder accepts pending interest', async () => {
+    it('INT-04B: Founder accepts pending interest', async () => {
       const res = await request(app)
         .patch(`/api/v1/interests/${createdInterestId}/status`)
         .set('Authorization', `Bearer ${founderToken}`)
@@ -356,7 +356,7 @@ describe('VentureFlow API Integration Tests', () => {
       expect(acceptRes.status).toBe(409);
     });
 
-    it('Concurrency test: Parallel POST interest requests for same pair yield exactly one 201 and one 409', async () => {
+    it('CONC-01: Concurrency test: Parallel POST interest requests for same pair yield exactly one 201 and one 409', async () => {
       // Create fresh third investor
       const thirdInv = await request(app)
         .post('/api/v1/auth/register')

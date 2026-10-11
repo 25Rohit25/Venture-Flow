@@ -30,22 +30,27 @@ app.use(
 );
 
 // CORS configuration with credentials support
-const allowedOrigins = [
-  config.clientOrigin,
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'http://localhost:3000',
-];
+// In production, restrict strictly to the configured client origin.
+// In development, allow configured client origin plus standard local development origins.
+const allowedOrigins =
+  config.env === 'production'
+    ? [config.clientOrigin].filter(Boolean)
+    : [
+        config.clientOrigin,
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+        'http://localhost:3000',
+      ].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (e.g. mobile apps, curl, server-to-server)
+      // Allow requests with no origin (e.g. mobile apps, curl, server-to-server, Supertest)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(null, true); // Permissive in local dev, allow specified
+      return callback(new AppError(`Origin ${origin} is not allowed by CORS`, 403, 'CORS_NOT_ALLOWED'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
